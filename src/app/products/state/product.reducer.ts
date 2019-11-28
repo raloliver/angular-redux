@@ -11,19 +11,24 @@ export interface ProductState {
   products: Product[];
 }
 
+const initialState: ProductState = {
+  showProductCode: true,
+  currentProduct: null,
+  products: []
+}
 
-export function reducer(state: ProductState, action): ProductState {
-    switch (action.type) {
+export function reducer(state = initialState, action): ProductState {
+  switch (action.type) {
 
-        case 'TOGGLE_PRODUCT_CODE':
-            console.log('current state', JSON.stringify(state));
-            console.log('payload', action.payload);
-            return {
-                ...state,
-                showProductCode: action.payload
-            }
+    case 'TOGGLE_PRODUCT_CODE':
+      console.log('current state', JSON.stringify(state));
+      console.log('payload', action.payload);
+      return {
+        ...state,
+        showProductCode: action.payload
+      }
 
-        default:
-            return state;
-    }
+    default:
+      return state;
+  }
 }
